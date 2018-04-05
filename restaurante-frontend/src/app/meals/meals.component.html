@@ -32,12 +32,12 @@
   <tbody>
   <tr *ngFor="let m of meals">
     <td>
-      <a [routerLink]="['/meal', m.id]">
+      <button [routerLink]="['/meal', m.id]">
         <fa [name]="'edit'"></fa>
-      </a>
-      <a (click)="delete(m)" href="">
+      </button>
+      <button (click)="delete(m)">
         <fa [name]="'minus'"></fa>
-      </a>
+      </button>
     </td>
 
     <td>{{ m.restaurant.name }}</td>
