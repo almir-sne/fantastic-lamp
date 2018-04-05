@@ -1,11 +1,22 @@
-
-<a [routerLink]="['/']">
-  Home
-</a>
-
-<a [routerLink]="['/restaurants']">
-  Restaurantes
-</a>
+<table>
+  <tr>
+    <td>
+      <a [routerLink]="['/']">
+        Home
+      </a>
+    </td>
+    <td>
+      <a [routerLink]="['/restaurants']">
+        Restaurantes
+      </a>
+    </td>
+    <td>
+      <a [routerLink]="['/meals']">
+        Pratos
+      </a>
+    </td>
+  </tr>
+</table>
 
 <hr />
 <router-outlet></router-outlet>

@@ -3,9 +3,9 @@ class MealsController < ApplicationController
 
   # GET /meals
   def index
-    @meals = Meal.all
+    @meals = Meal.includes(:restaurant)
 
-    render json: @meals
+    render json: @meals, :include => {:restaurant => {:only => :name}}
   end
 
   # GET /meals/1

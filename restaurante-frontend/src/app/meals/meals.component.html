@@ -1,0 +1,31 @@
+<table>
+  <thead>
+  <tr>
+    <th></th>
+    <th>Restaurante</th>
+    <th>Nome</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <tr *ngFor="let m of meals">
+    <td>
+      <a [routerLink]="['/meal', m.id]">
+        <fa [name]="'edit'"></fa>
+      </a>
+      <a (click)="delete(m)" href="">
+        <fa [name]="'minus'"></fa>
+      </a>
+    </td>
+
+    <td>{{ m.restaurant.name }}</td>
+    <td>{{ m.name }}</td>
+  </tr>
+  </tbody>
+</table>
+
+<div style="bottom: 45px; right: 24px;">
+  <button routerLink="/meal/new">
+    Novo
+  </button>
+</div>
