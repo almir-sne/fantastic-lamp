@@ -13,8 +13,8 @@ export class RestaurantService {
 
   constructor(private http: Http) { }
 
-  getRestaurants(){
-    return this.http.get(this.url)
+  getRestaurants(search ?: String){
+    return this.http.get(search ? this.url + "?search=" + search : this.url)
       .map(res => res.json());
   }
 

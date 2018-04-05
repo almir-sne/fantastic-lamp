@@ -3,8 +3,8 @@ class RestaurantsController < ApplicationController
 
   # GET /restaurants
   def index
-    @restaurants = Restaurant.all
-
+    @search = params[:search] || ""
+    @restaurants = @search.empty? ? Restaurant.all : Restaurant.where(name: @search)
     render json: @restaurants
   end
 

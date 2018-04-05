@@ -8,8 +8,8 @@ export class MealService {
 
   constructor(private http: Http) { }
 
-  getMeals(){
-    return this.http.get(this.url)
+  getMeals(search ?: String){
+    return this.http.get(search ? this.url + "?search=" + search : this.url)
       .map(res => res.json());
   }
 

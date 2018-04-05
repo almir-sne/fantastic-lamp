@@ -10,12 +10,17 @@ import {Meal} from "./shared/meal";
 export class MealsComponent implements OnInit {
 
   meals: Meal[] = [];
+  name: String;
 
   constructor(private mealService: MealService) {
   }
 
   ngOnInit() {
     this.mealService.getMeals().subscribe(data => this.meals = data);
+  }
+
+  search() {
+    this.mealService.getMeals(this.name).subscribe(data => {this.meals = data});
   }
 
   delete(meal) {

@@ -3,8 +3,8 @@ class MealsController < ApplicationController
 
   # GET /meals
   def index
-    @meals = Meal.includes(:restaurant)
-
+    @search = params[:search] || ""
+    @meals = @search.empty? ? Meal.includes(:restaurant) : Meal.where(name: @search)
     render json: @meals, :include => {:restaurant => {:only => :name}}
   end
 

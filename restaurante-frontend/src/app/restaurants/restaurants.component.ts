@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Restaurant} from './shared/restaurant';
 import {RestaurantService} from "./shared/restaurant.service";
 
@@ -8,12 +8,20 @@ import {RestaurantService} from "./shared/restaurant.service";
   styleUrls: ['./restaurants.component.css']
 })
 export class RestaurantsComponent implements OnInit {
-
+  name: String;
   restaurants: Restaurant[] = [];
-  constructor(private restaurantService : RestaurantService) { }
+
+  constructor(private restaurantService: RestaurantService) {
+  }
 
   ngOnInit() {
     this.restaurantService.getRestaurants().subscribe(data => this.restaurants = data);
+  }
+
+  search() {
+    this.restaurantService.getRestaurants(this.name).subscribe(data => {
+      this.restaurants = data
+    });
   }
 
   delete(restaurant) {
