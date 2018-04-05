@@ -2,17 +2,27 @@
   <form (ngSubmit)="save()">
     <div>
       <label for="restaurant">Restaurante</label>
+      <br>
       <select id="restaurant" required [(ngModel)]="meal.restaurant_id" name="restaurant" >
         <option value="null" disabled [hidden]="true"> Selecione </option>
         <option *ngFor="let restaurant of restaurants" [ngValue]="restaurant.id"> {{ restaurant.name }} </option>
       </select>
     </div>
     <div>
-      <label for="name">Nome</label>
+      <label for="name">Prato</label>
+      <br>
       <input type="text" id="name" required [(ngModel)]="meal.name" name="name" >
     </div>
-    <button type="submit">Salvar</button>
-    <a routerLink="/meals">Cancelar</a>
+    <br>
+    <br>
+    <button type="submit">
+      <fa [name]="'save'"></fa>
+      Salvar
+    </button>
+    <button routerLink="/meals">
+      <fa [name]="'undo'"></fa>
+      Cancelar
+    </button>
   </form>
   <hr />
 </div>

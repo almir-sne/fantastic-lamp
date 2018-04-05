@@ -1,9 +1,19 @@
 <div class="container">
   <form (ngSubmit)="search()">
     <div>
-      <label for="name">Pesquisar</label>
-      <input type="text" id="name" [(ngModel)]="name" name="name" >
-      <button type="submit">Pesquisar</button>
+      <label for="name">Nome:</label>
+      <br>
+      <input type="text" id="name" [(ngModel)]="name" name="name">
+      <br>
+      <br>
+      <button type="submit">
+        <fa [name]="'search'"></fa>
+        Pesquisar
+      </button>
+      <button routerLink="/meal/new">
+        <fa [name]="'plus'"></fa>
+        Cadastrar novo prato
+      </button>
     </div>
   </form>
   <hr />
@@ -14,7 +24,7 @@
   <tr>
     <th></th>
     <th>Restaurante</th>
-    <th>Nome</th>
+    <th>Prato</th>
   </tr>
   </thead>
 
@@ -34,9 +44,3 @@
   </tr>
   </tbody>
 </table>
-
-<div style="bottom: 45px; right: 24px;">
-  <button routerLink="/meal/new">
-    Novo
-  </button>
-</div>

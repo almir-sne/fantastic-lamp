@@ -1,11 +1,20 @@
 <div class="container">
   <form (ngSubmit)="save()">
     <div>
-      <label for="name">Nome</label>
-      <input type="text" id="name" required [(ngModel)]="restaurant.name" name="name" >
+      <label for="name">Nome do restaurante:</label>
+      <br>
+      <input type="text" id="name" required [(ngModel)]="restaurant.name" name="name">
     </div>
-    <button type="submit">Salvar</button>
-    <a routerLink="/restaurants">Cancelar</a>
+    <br>
+    <br>
+    <button type="submit">
+      <fa [name]="'save'"></fa>
+      Salvar
+    </button>
+    <button routerLink="/restaurants">
+      <fa [name]="'undo'"></fa>
+      Cancelar
+    </button>
   </form>
-  <hr />
+  <hr/>
 </div>
