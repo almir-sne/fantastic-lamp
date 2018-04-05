@@ -10,13 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180404235958) do
+ActiveRecord::Schema.define(version: 20180405045921) do
 
   create_table "meals", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string "name"
     t.bigint "restaurant_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.decimal "price", precision: 15, scale: 2
     t.index ["restaurant_id"], name: "index_meals_on_restaurant_id"
   end
 

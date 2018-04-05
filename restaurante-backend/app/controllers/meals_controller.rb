@@ -46,6 +46,6 @@ class MealsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def meal_params
-      params.require(:meal).permit(:name, :restaurant_id)
+      params.require(:meal).permit(:name, :restaurant_id, :price)
     end
 end
