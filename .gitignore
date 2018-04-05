@@ -1,44 +1,62 @@
 *.rbc
-capybara-*.html
-.rspec
-/log
-/tmp
-/db/*.sqlite3
-/db/*.sqlite3-journal
-/public/system
-/coverage/
-/spec/tmp
+/restaurante-backend/capybara-*.html
+/restaurante-backend/.rspec
+/restaurante-backend/log
+/restaurante-backend/tmp
+/restaurante-backend/db/*.sqlite3
+/restaurante-backend/db/*.sqlite3-journal
+/restaurante-backend/public/system
+/restaurante-backend/coverage/
+/restaurante-backend/spec/tmp
 *.orig
-rerun.txt
-pickle-email-*.html
+/restaurante-backend/rerun.txt
+/restaurante-backend/pickle-email-*.html
 
 # TODO Comment out this rule if you are OK with secrets being uploaded to the repo
-config/initializers/secret_token.rb
+/restaurante-backend/config/initializers/secret_token.rb
 
 # Only include if you have production secrets in this file, which is no longer a Rails default
 # config/secrets.yml
 
 # dotenv
 # TODO Comment out this rule if environment variables can be committed
-.env
+/restaurante-backend/.env
 
 ## Environment normalization:
-/.bundle
-/vendor/bundle
+/restaurante-backend/.bundle
+/restaurante-backend/vendor/bundle
 
 # these should all be checked in to normalize the environment:
 # Gemfile.lock, .ruby-version, .ruby-gemset
 
 # unless supporting rvm < 1.11.0 or doing something fancy, ignore this:
-.rvmrc
-
-# if using bower-rails ignore default bower_components path bower.json files
-/vendor/assets/bower_components
-*.bowerrc
-bower.json
+/restaurante-backend/.rvmrc
 
 # Ignore pow environment settings
-.powenv
+/restaurante-backend/.powenv
 
 # Ignore Byebug command history file.
-.byebug_history
+/restaurante-backend/.byebug_history
+
+/restaurante-frontend/dist
+/restaurante-frontend/dist-server
+/restaurante-frontend/tmp
+/restaurante-frontend/out-tsc
+/restaurante-frontend/node_modules
+/restaurante-frontend/.idea
+/restaurante-frontend/.project
+/restaurante-frontend/.classpath
+/restaurante-frontend/.sass-cache
+/restaurante-frontend/connect.lock
+/restaurante-frontend/coverage
+/restaurante-frontend/libpeerconnection.log
+/restaurante-frontend/npm-debug.log
+/restaurante-frontend/yarn-error.log
+/restaurante-frontend/testem.log
+/restaurante-frontend/typings
+/restaurante-frontend/e2e/*.js
+/restaurante-frontend/e2e/*.map
+/restaurante-frontend/.DS_Store
+/restaurante-frontend/Thumbs.db
+
+restaurante-backend/.idea
