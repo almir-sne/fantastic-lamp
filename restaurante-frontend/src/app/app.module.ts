@@ -10,6 +10,7 @@ import { HomeComponent } from './home/home.component';
 
 import { routing } from './app.routing';
 import {RestaurantService} from "./restaurants/shared/restaurant.service";
+import {Angular2FontawesomeModule} from "angular2-fontawesome";
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import {RestaurantService} from "./restaurants/shared/restaurant.service";
     BrowserModule,
     FormsModule,
     HttpModule,
+    Angular2FontawesomeModule,
     routing
   ],
   providers: [RestaurantService],

@@ -1,9 +1,8 @@
 <table>
   <thead>
   <tr>
+    <th></th>
     <th data-field="name">Nome</th>
-    <th></th>
-    <th></th>
   </tr>
   </thead>
 
@@ -11,12 +10,10 @@
   <tr *ngFor="let r of restaurants">
     <td>
       <a [routerLink]="['/restaurant', r.id]">
-        Editar
+        <fa [name]="'edit'"></fa>
       </a>
-    </td>
-    <td>
       <a (click)="delete(r)" href="">
-        Deletar
+        <fa [name]="'minus'"></fa>
       </a>
     </td>
 
