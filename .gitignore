@@ -1,6 +1,5 @@
 *.rbc
 /restaurante-backend/capybara-*.html
-/restaurante-backend/.rspec
 /restaurante-backend/log
 /restaurante-backend/tmp
 /restaurante-backend/db/*.sqlite3
