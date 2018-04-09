@@ -1,33 +1,41 @@
-<div class="container">
-  <form (ngSubmit)="save()">
-    <div>
-      <label for="restaurant">Restaurante</label>
-      <br>
-      <select id="restaurant" required [(ngModel)]="meal.restaurant_id" name="restaurant" >
-        <option value="null" disabled [hidden]="true"> Selecione </option>
-        <option *ngFor="let restaurant of restaurants" [ngValue]="restaurant.id"> {{ restaurant.name }} </option>
-      </select>
-    </div>
-    <div>
-      <label for="name">Prato</label>
-      <br>
-      <input type="text" id="name" required [(ngModel)]="meal.name" name="name" >
-    </div>
-    <div>
-      <label for="price">Preço</label>
-      <br>
-      <input type="text" id="price" required [(ngModel)]="meal.price" name="price" >
-    </div>
-    <br>
-    <br>
-    <button type="submit">
-      <fa [name]="'save'"></fa>
-      Salvar
-    </button>
-    <button routerLink="/meals">
-      <fa [name]="'undo'"></fa>
-      Cancelar
-    </button>
-  </form>
-  <hr />
+<h2> Cadastro de pratos </h2>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Dados</h3>
+  </div>
+  <div class="panel-body">
+    <form (ngSubmit)="save()">
+      <div class="row">
+        <div class="col-lg-7">
+          <div class="form-group">
+            <label for="restaurant">Restaurante</label>
+            <select class="form-control" id="restaurant" required [(ngModel)]="meal.restaurant_id" name="restaurant">
+              <option value="null" disabled [hidden]="true"> Selecione</option>
+              <option *ngFor="let restaurant of restaurants" [ngValue]="restaurant.id"> {{ restaurant.name }}</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="name">Prato</label>
+            <input class="form-control" type="text" id="name" required [(ngModel)]="meal.name" name="name">
+          </div>
+
+          <div class="form-group">
+            <label for="price">Preço</label>
+            <input class="form-control" type="text" id="price" required [(ngModel)]="meal.price" name="price">
+          </div>
+        </div>
+      </div>
+
+      <button class="btn btn-success" type="submit">
+        <fa [name]="'save'"></fa>
+        Salvar
+      </button>
+      <button class="btn btn-danger" routerLink="/meals">
+        <fa [name]="'undo'"></fa>
+        Cancelar
+      </button>
+    </form>
+  </div>
 </div>

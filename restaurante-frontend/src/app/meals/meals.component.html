@@ -1,48 +1,71 @@
-<div class="container">
-  <form (ngSubmit)="search()">
-    <div>
-      <label for="name">Nome:</label>
-      <br>
-      <input type="text" id="name" [(ngModel)]="name" name="name">
-      <br>
-      <br>
-      <button type="submit">
-        <fa [name]="'search'"></fa>
-        Pesquisar
-      </button>
-      <button routerLink="/meal/new">
-        <fa [name]="'plus'"></fa>
-        Cadastrar novo prato
-      </button>
-    </div>
-  </form>
-  <hr/>
+<h2> Pratos </h2>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Filtros</h3>
+  </div>
+  <div class="panel-body">
+    <form (ngSubmit)="search()">
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="Nome" id="name" [(ngModel)]="name" name="name">
+            <span class="input-group-btn">
+          <button class="btn btn-primary" type="submit">
+            <fa [name]="'search'"></fa>
+            Pesquisar
+           </button>
+        </span>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <button class="btn btn-success" routerLink="/meal/new">
+            <fa [name]="'plus'"></fa>
+            Cadastrar novo prato
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
 </div>
 
-<table>
-  <thead>
-  <tr>
-    <th></th>
-    <th>Restaurante</th>
-    <th>Prato</th>
-    <th>Preço</th>
-  </tr>
-  </thead>
+<div class="table-container">
+  <table class="table table-striped">
+    <colgroup>
+      <col class="table-icon">
+      <col class="table-icon">
+      <col>
+      <col>
+      <col>
+    </colgroup>
+    <thead>
+    <tr>
+      <th></th>
+      <th></th>
+      <th>Restaurante</th>
+      <th>Prato</th>
+      <th>Preço</th>
+    </tr>
+    </thead>
 
-  <tbody>
-  <tr *ngFor="let m of meals">
-    <td>
-      <button [routerLink]="['/meal', m.id]">
-        <fa [name]="'edit'"></fa>
-      </button>
-      <button (click)="delete(m)">
-        <fa [name]="'minus'"></fa>
-      </button>
-    </td>
+    <tbody>
+    <tr *ngFor="let m of meals">
+      <td class="td-icon td-icon-red">
+        <a (click)="delete(m)">
+          <fa [name]="'minus'"></fa>
+        </a>
+      </td>
 
-    <td>{{ m.restaurant.name }}</td>
-    <td>{{ m.name }}</td>
-    <td>{{ m.price }}</td>
-  </tr>
-  </tbody>
-</table>
+      <td class="td-icon">
+        <a [routerLink]="['/meal', m.id]">
+          <fa [name]="'edit'"></fa>
+        </a>
+      </td>
+
+      <td class="table-border">{{ m.restaurant.name }}</td>
+      <td class="table-border">{{ m.name }}</td>
+      <td>{{ m.price }}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>

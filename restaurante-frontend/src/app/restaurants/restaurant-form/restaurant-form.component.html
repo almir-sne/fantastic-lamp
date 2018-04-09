@@ -1,20 +1,28 @@
-<div class="container">
-  <form (ngSubmit)="save()">
-    <div>
-      <label for="name">Nome do restaurante:</label>
-      <br>
-      <input type="text" id="name" required [(ngModel)]="restaurant.name" name="name">
-    </div>
-    <br>
-    <br>
-    <button type="submit">
-      <fa [name]="'save'"></fa>
-      Salvar
-    </button>
-    <button routerLink="/restaurants">
-      <fa [name]="'undo'"></fa>
-      Cancelar
-    </button>
-  </form>
-  <hr/>
+<h2> Cadastro de restaurantes </h2>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Dados</h3>
+  </div>
+  <div class="panel-body">
+    <form (ngSubmit)="save()">
+      <div class="row">
+        <div class="col-lg-7">
+          <div class="form-group">
+            <label for="name">Nome do restaurante:</label>
+            <input class="form-control" type="text" id="name" required [(ngModel)]="restaurant.name" name="name">
+          </div>
+        </div>
+      </div>
+
+      <button class="btn btn-success" type="submit">
+        <fa [name]="'save'"></fa>
+        Salvar
+      </button>
+      <button class="btn btn-danger" routerLink="/restaurants">
+        <fa [name]="'undo'"></fa>
+        Cancelar
+      </button>
+    </form>
+  </div>
 </div>
