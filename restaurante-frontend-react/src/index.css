@@ -1,5 +1,37 @@
-body {
-  margin: 0;
-  padding: 0;
-  font-family: sans-serif;
+.table-icon {
+  width: 60px;
+  border-right: 2px solid #dddddd;
+}
+
+.table-border {
+  border-right: 2px solid #dddddd;
+}
+
+.td-icon {
+  text-align: center;
+}
+
+.td-icon a {
+  font-size: 20px;
+}
+
+.td-icon-red a {
+  color: red;
+}
+
+.td-icon-red a:hover {
+  color: darkred;
+}
+
+.td-icon a:hover {
+  cursor: pointer;
+}
+
+.table thead {
+  background-color: #dddddd;
+}
+
+.table-container {
+  height: 500px;
+  overflow-y: scroll;
 }
