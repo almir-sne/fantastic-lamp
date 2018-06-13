@@ -1,15 +1,16 @@
 import React from 'react';
-import {Navbar, NavbarBrand, NavItem, NavLink, Nav} from 'reactstrap'
+import {Navbar, NavbarBrand, NavItem, Nav, NavLink} from 'reactstrap'
+import {Link} from 'react-router-dom'
 
 const Menu = () =>
     <Navbar light expand="md">
-        <NavbarBrand href="/">Home</NavbarBrand>
+        <NavbarBrand tag={Link} to="/">Home</NavbarBrand>
         <Nav navbar>
             <NavItem>
-                <NavLink href="#">Restaurantes</NavLink>
+                <NavLink tag={Link} to="/restaurants">Restaurantes</NavLink>
             </NavItem>
             <NavItem>
-                <NavLink href="#">Pratos</NavLink>
+                <NavLink tag={Link} to="/meals">Pratos</NavLink>
             </NavItem>
         </Nav>
     </Navbar>

@@ -58,4 +58,6 @@
 /restaurante-frontend/.DS_Store
 /restaurante-frontend/Thumbs.db
 
+/restaurante-frontend-react/node_modules
+
 restaurante-backend/.idea
