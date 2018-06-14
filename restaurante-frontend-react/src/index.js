@@ -8,13 +8,13 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'font-awesome/css/font-awesome.css';
 import {createStore, applyMiddleware} from 'redux'
 import createSagaMiddleware from 'redux-saga'
-// import {rootSaga} from './sagas'
+import rootSaga from './sagas/rootSaga'
 import {Provider} from 'react-redux';
 import rootReducer from "./reducers/rootReducer";
 
 const sagaMiddleware = createSagaMiddleware();
 const store = createStore(rootReducer, applyMiddleware(sagaMiddleware));
-// sagaMiddleware.run(rootSaga);
+sagaMiddleware.run(rootSaga);
 
 function render() {
     ReactDOM.render(

@@ -41,7 +41,7 @@ class CreateRestaurant extends React.Component {
 
 const mapStateToProps = state => {
     return {
-        restaurants : state.restaurants
+        ...state.restaurants
     }
 };
 

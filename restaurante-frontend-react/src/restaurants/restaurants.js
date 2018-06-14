@@ -6,7 +6,7 @@ class Restaurants extends React.Component {
     componentDidMount() {
         this.props.listRestaurants();
     }
-    
+
     render() {
         return (
             <Fragment>
@@ -42,6 +42,8 @@ class Restaurants extends React.Component {
                 </div>
 
                 <div className="table-container">
+                    {this.props.restaurants &&
+
                     <table className="table table-striped">
                         <colgroup>
                             <col className="table-icon"/>
@@ -57,33 +59,33 @@ class Restaurants extends React.Component {
                         </thead>
 
                         <tbody>
-                        <tr>
-                            <td className=" td-icon td-icon-red">
-                                <a>
-                                    <i className="fa fa-minus"/>
-                                </a>
-                            </td>
+                        {this.props.restaurants.map(restaurant =>
+                            <tr key={restaurant.id}>
+                                <td className=" td-icon td-icon-red">
+                                    <a>
+                                        <i className="fa fa-minus"/>
+                                    </a>
+                                </td>
 
-                            <td className="td-icon">
-                                <Link to="/restaurant">
-                                    <i className="fa fa-edit"/>
-                                </Link>
-                            </td>
-                            <td> Name</td>
-                        </tr>
+                                <td className="td-icon">
+                                    <Link to="/restaurant">
+                                        <i className="fa fa-edit"/>
+                                    </Link>
+                                </td>
+                                <td> {restaurant.name}</td>
+                            </tr>
+                        )}
                         </tbody>
                     </table>
+                    }
                 </div>
             </Fragment>
         );
     }
 }
 
-
-const mapStateToProps = state => {
-    return {
-        restaurants: state.restaurants
-    }
+const mapStateToProps = ({restaurantsReducer}) => {
+    return {restaurants: restaurantsReducer.restaurants}
 };
 
 const mapDispatchToProps = dispatch => {
