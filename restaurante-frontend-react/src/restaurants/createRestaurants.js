@@ -1,9 +1,17 @@
 import React, {Fragment} from 'react';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
+import {withFormik} from 'formik';
 
-class CreateRestaurant extends React.Component {
+class RestaurantForm extends React.Component {
+    componentWillMount() {
+        if (this.props.match.params.id) {
+            this.props.getRestaurant(this.props.match.params.id);
+        }
+    }
+
     render() {
+        const {values, handleChange, isSubmitting, handleSubmit} = this.props;
         return (
             <Fragment>
                 <h2> Cadastro de restaurantes </h2>
@@ -13,17 +21,18 @@ class CreateRestaurant extends React.Component {
                         <h3 className="panel-title">Dados</h3>
                     </div>
                     <div className="panel-body">
-                        <form>
+                        <form onSubmit={handleSubmit}>
                             <div className="row">
                                 <div className="col-lg-7">
                                     <div className="form-group">
-                                        <label for="name">Restaurante</label>
-                                        <input className="form-control" type="text" id="name" required name="name"/>
+                                        <label htmlFor="name">Restaurante</label>
+                                        <input className="form-control" type="text" onChange={handleChange}
+                                               value={values.name} required name="name"/>
                                     </div>
                                 </div>
                             </div>
 
-                            <button className="btn btn-success" type=" submit">
+                            <button className="btn btn-success" type="submit" disabled={isSubmitting}>
                                 <i className="fa fa-save"/>
                                 Salvar
                             </button>
@@ -39,19 +48,26 @@ class CreateRestaurant extends React.Component {
     }
 }
 
-const mapStateToProps = state => {
-    return {
-        ...state.restaurants
-    }
-};
+const mapStateToProps = ({restaurantsReducer}) => ({
+        restaurant: restaurantsReducer.restaurant || {}
+});
 
-const mapDispatchToProps = dispatch => {
-    return {
-        listRestaurants : () => dispatch({type: 'LIST_RESTAURANTS'})
-    }
+const mapDispatchToProps = dispatch => ({
+    getRestaurant: (id) => dispatch({type: 'GET_RESTAURANT', id}),
+    persistRestaurant: (restaurant) => dispatch({type: 'PERSIST_RESTAURANT', restaurant})
+});
+
+const mapPropsToValues = props => ({name: props.restaurant.name || '', id: props.restaurant.id});
+
+const handleSubmit = (values, {props}) => {
+    props.persistRestaurant(values)
 };
 
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(CreateRestaurant);
+)(withFormik({
+    mapPropsToValues,
+    handleSubmit,
+    enableReinitialize: true
+})(RestaurantForm));

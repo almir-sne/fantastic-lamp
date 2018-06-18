@@ -13,7 +13,8 @@
     "axios": "0.18.0",
     "redux": "^3.3.1",
     "redux-saga": "^0.15.0",
-    "react-redux": "5.0.7"
+    "react-redux": "5.0.7",
+    "formik": "0.11.11"
   },
   "scripts": {
     "start": "PORT=9000 react-scripts start",

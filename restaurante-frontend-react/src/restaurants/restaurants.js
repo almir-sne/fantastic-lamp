@@ -23,8 +23,8 @@ class Restaurants extends React.Component {
                                     <div className="input-group">
                                         <input type="text" className="form-control" placeholder="Nome"
                                                id="name" name=" name"/>
-                                        <span className=" input-group-btn">
-                                    <button className=" btn btn-primary" type="submit">
+                                        <span className="input-group-btn">
+                                    <button className="btn btn-primary" type="submit">
                                         <i className="fa fa-search"/>
                                      </button>
                                 </span>
@@ -61,14 +61,14 @@ class Restaurants extends React.Component {
                         <tbody>
                         {this.props.restaurants.map(restaurant =>
                             <tr key={restaurant.id}>
-                                <td className=" td-icon td-icon-red">
+                                <td className="td-icon td-icon-red">
                                     <a>
                                         <i className="fa fa-minus"/>
                                     </a>
                                 </td>
 
                                 <td className="td-icon">
-                                    <Link to="/restaurant">
+                                    <Link to={'/restaurant/' + restaurant.id}>
                                         <i className="fa fa-edit"/>
                                     </Link>
                                 </td>

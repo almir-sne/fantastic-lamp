@@ -15,7 +15,7 @@ class Routes extends Component {
                 <Route exact path='/meals' component={Meals}/>
                 <Route exact path='/restaurants' component={Restaurants}/>
                 <Route path='/meal' component={CreateMeal}/>
-                <Route path="/restaurant" component={CreateRestaurant}/>
+                <Route path="/restaurant/:id?" component={CreateRestaurant}/>
             </Switch>
         );
     }
