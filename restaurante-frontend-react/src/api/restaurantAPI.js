@@ -1,7 +1,7 @@
 import API from './api'
 
-const listRestaurants = () => {
-    return API.get('restaurants');
+const listRestaurants = (search) => {
+    return API.get('restaurants', {params: {search: search}});
 };
 
 const getRestaurant = (id) => {

@@ -1,11 +1,30 @@
 import React, {Fragment} from 'react';
 import {Link} from 'react-router-dom';
 import {connect} from "react-redux";
+import {parse} from 'query-string';
+import {SearchBox} from '../common'
+
 
 class Restaurants extends React.Component {
-    componentDidMount() {
-        this.props.listRestaurants();
+    constructor(props) {
+        super(props);
+        let {search} = parse(this.props.location.search);
+        this.state = {search: search};
     }
+
+    componentDidMount() {
+        this.props.listRestaurants(this.state.search);
+    }
+
+    componentWillUpdate (newProps, newState) {
+        if(newProps.location.search !== this.props.location.search) {
+            this.props.listRestaurants(newState.search);
+        }
+    }
+
+    handleChange = ({target}) => {
+        this.setState({[target.name]: target.value})
+    };
 
     render() {
         return (
@@ -17,27 +36,20 @@ class Restaurants extends React.Component {
                         <h3 className="panel-title">Filtros</h3>
                     </div>
                     <div className="panel-body">
-                        <form>
-                            <div className="row">
-                                <div className="col-lg-6">
-                                    <div className="input-group">
-                                        <input type="text" className="form-control" placeholder="Nome"
-                                               id="name" name=" name"/>
-                                        <span className="input-group-btn">
-                                    <button className="btn btn-primary" type="submit">
-                                        <i className="fa fa-search"/>
-                                     </button>
-                                </span>
-                                    </div>
-                                </div>
-                                <div className="col-lg-6">
-                                    <Link to="/restaurant" className="btn btn-success">
-                                        <i className="fa fa-plus"/>
-                                        Cadastrar novo restaurante
-                                    </Link>
+                        <div className="row">
+                            <div className="col-lg-6">
+                                <div className="input-group">
+                                    <SearchBox search={this.state.search} path="/restaurants"
+                                               handleChange={this.handleChange}/>
                                 </div>
                             </div>
-                        </form>
+                            <div className="col-lg-6">
+                                <Link to="/restaurant" className="btn btn-success">
+                                    <i className="fa fa-plus"/>
+                                    Cadastrar novo restaurante
+                                </Link>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -89,7 +101,7 @@ const mapStateToProps = ({restaurantsReducer}) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-    listRestaurants: () => dispatch({type: 'LIST_RESTAURANTS'}),
+    listRestaurants: (search) => dispatch({type: 'LIST_RESTAURANTS', search: search}),
     deleteRestaurant: (id) => dispatch({type: 'DELETE_RESTAURANT', id: id})
 });
 

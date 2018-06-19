@@ -2,8 +2,8 @@ import {put, takeLatest, call} from 'redux-saga/effects'
 import restaurantAPI from '../api/restaurantAPI';
 import {push} from 'connected-react-router';
 
-function* listRestaurantsRequest() {
-    const response = yield call(restaurantAPI.listRestaurants);
+function* listRestaurantsRequest({search}) {
+    const response = yield call(restaurantAPI.listRestaurants, search);
 
     if (response && (response.status === 200 || response.status === 304)) {
         yield put({
