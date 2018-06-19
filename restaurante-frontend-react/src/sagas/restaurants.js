@@ -16,7 +16,7 @@ function* listRestaurantsRequest() {
 function* persistRestaurantRequest({restaurant}) {
     const response = yield call(restaurantAPI.persistRestaurant, restaurant);
 
-    if (response && (response.status === 200)) {
+    if (response && (response.status === 200 || response.status === 201)) {
         yield put(push('/restaurants'))
     }
 }
@@ -42,28 +42,19 @@ function* getRestaurantRequest({id}) {
 function* deleteRestaurant({id}) {
     const response = yield call(restaurantAPI.deleteRestaurant, id);
 
-    if (response && (response.status === 200)) {
+    if (response && (response.status === 204)) {
         yield put({
             type: 'DELETE_RESTAURANT_SUCCESS',
-            restaurant: id
+            id: id
         });
     }
 }
 
-function* watchGetRestaurant() {
-    yield takeLatest('GET_RESTAURANT', getRestaurantRequest)
-}
-
-function* watchListRestaurants() {
-    yield takeLatest('LIST_RESTAURANTS', listRestaurantsRequest)
-}
-
-function* watchPersistRestaurant() {
-    yield takeLatest('PERSIST_RESTAURANT', persistRestaurantRequest)
-}
-
-function* watchDeleteRestaurant() {
-    yield takeLatest('DELETE_RESTAURANT', deleteRestaurant)
-}
-
-export default [watchListRestaurants, watchPersistRestaurant, watchGetRestaurant, watchDeleteRestaurant];
+export default function* restaurantsWatcher() {
+    yield [
+        takeLatest('GET_RESTAURANT', getRestaurantRequest),
+        takeLatest('LIST_RESTAURANTS', listRestaurantsRequest),
+        takeLatest('PERSIST_RESTAURANT', persistRestaurantRequest),
+        takeLatest('DELETE_RESTAURANT', deleteRestaurant)
+    ]
+};
