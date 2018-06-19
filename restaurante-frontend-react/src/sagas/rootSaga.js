@@ -1,8 +1,10 @@
 import { fork } from 'redux-saga/effects';
 import restaurantsWatcher from './restaurants';
+import mealsWatcher from './meals'
 
 const sagas = [
-    restaurantsWatcher
+    restaurantsWatcher,
+    mealsWatcher
 ];
 
 export default function* root() {

@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import {withFormik} from 'formik';
 
 class RestaurantForm extends React.Component {
-    componentWillMount() {
+    componentDidMount() {
         this.props.getRestaurant(this.props.match.params.id);
     }
 

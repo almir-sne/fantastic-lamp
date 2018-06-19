@@ -4,7 +4,6 @@ import {connect} from "react-redux";
 import {parse} from 'query-string';
 import {SearchBox} from '../common'
 
-
 class Restaurants extends React.Component {
     constructor(props) {
         super(props);

@@ -1,9 +1,5 @@
 export default (state = {}, action) => {
     switch (action.type) {
-        case 'LIST_RESTAURANTS':
-            return {
-                ...state
-            };
         case 'LIST_RESTAURANTS_SUCCESS' :
             return {
                 ...state,
@@ -29,6 +25,7 @@ export default (state = {}, action) => {
                 ...state,
                 restaurants: state.restaurants.filter(restaurant => restaurant.id !== action.id)
             };
+        case 'LIST_RESTAURANTS':
         default:
             return state
     }
