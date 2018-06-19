@@ -15,7 +15,7 @@ export default (state = {}, action) => {
                 restaurant: action.restaurant
             };
         case 'GET_RESTAURANT' :
-            return {
+            return { 
                 ...state,
                 id: action.id
             };
@@ -23,6 +23,11 @@ export default (state = {}, action) => {
             return {
                 ...state,
                 restaurant: action.restaurant
+            };
+        case 'DELETE_RESTAURANT_SUCCESS':
+            return {
+                ...state,
+                restaurants: state.restaurants.filter(restaurant => restaurant.id !== action.id)
             };
         default:
             return state

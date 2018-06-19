@@ -1,5 +1,6 @@
 import {put, takeLatest, call} from 'redux-saga/effects'
 import restaurantAPI from '../api/restaurantAPI';
+import {push} from 'connected-react-router';
 
 function* listRestaurantsRequest() {
     const response = yield call(restaurantAPI.listRestaurants);
@@ -16,10 +17,41 @@ function* persistRestaurantRequest({restaurant}) {
     const response = yield call(restaurantAPI.persistRestaurant, restaurant);
 
     if (response && (response.status === 200)) {
+        yield put(push('/restaurants'))
+    }
+}
+
+function* getRestaurantRequest({id}) {
+    if (id) {
+        const response = yield call(restaurantAPI.getRestaurant, id);
+
+        if (response && (response.status === 200 || response.status === 304)) {
+            yield put({
+                type: 'GET_RESTAURANT_SUCCESS',
+                restaurant: response.data
+            });
+        }
+    } else {
         yield put({
-            type: 'PERSIST_RESTAURANT_SUCCESS'
+            type: 'GET_RESTAURANT_SUCCESS'
         });
     }
+
+}
+
+function* deleteRestaurant({id}) {
+    const response = yield call(restaurantAPI.deleteRestaurant, id);
+
+    if (response && (response.status === 200)) {
+        yield put({
+            type: 'DELETE_RESTAURANT_SUCCESS',
+            restaurant: id
+        });
+    }
+}
+
+function* watchGetRestaurant() {
+    yield takeLatest('GET_RESTAURANT', getRestaurantRequest)
 }
 
 function* watchListRestaurants() {
@@ -30,19 +62,8 @@ function* watchPersistRestaurant() {
     yield takeLatest('PERSIST_RESTAURANT', persistRestaurantRequest)
 }
 
-function* getRestaurantRequest({id}) {
-    const response = yield call(restaurantAPI.getRestaurant, id);
-
-    if (response && (response.status === 200 || response.status === 304)) {
-        yield put({
-            type: 'GET_RESTAURANT_SUCCESS',
-            restaurant: response.data
-        });
-    }
+function* watchDeleteRestaurant() {
+    yield takeLatest('DELETE_RESTAURANT', deleteRestaurant)
 }
 
-function* watchGetRestaurant() {
-    yield takeLatest('GET_RESTAURANT', getRestaurantRequest)
-}
-
-export default [watchListRestaurants, watchPersistRestaurant, watchGetRestaurant];
+export default [watchListRestaurants, watchPersistRestaurant, watchGetRestaurant, watchDeleteRestaurant];

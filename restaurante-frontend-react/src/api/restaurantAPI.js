@@ -12,4 +12,8 @@ const persistRestaurant = (restaurant) => {
     return restaurant.id ? API.put('restaurants/' + restaurant.id, restaurant) : API.post('restaurants', restaurant);
 };
 
-export default {listRestaurants, getRestaurant, persistRestaurant}
+const deleteRestaurant = (id) => {
+    return API.delete('restaurants/' + id);
+};
+
+export default {listRestaurants, getRestaurant, persistRestaurant, deleteRestaurant}

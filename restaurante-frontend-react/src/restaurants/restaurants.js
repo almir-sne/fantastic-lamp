@@ -62,7 +62,7 @@ class Restaurants extends React.Component {
                         {this.props.restaurants.map(restaurant =>
                             <tr key={restaurant.id}>
                                 <td className="td-icon td-icon-red">
-                                    <a>
+                                    <a onClick={() => this.props.deleteRestaurant(restaurant.id)}>
                                         <i className="fa fa-minus"/>
                                     </a>
                                 </td>
@@ -84,15 +84,14 @@ class Restaurants extends React.Component {
     }
 }
 
-const mapStateToProps = ({restaurantsReducer}) => {
-    return {restaurants: restaurantsReducer.restaurants}
-};
+const mapStateToProps = ({restaurantsReducer}) => ({
+    restaurants: restaurantsReducer.restaurants
+});
 
-const mapDispatchToProps = dispatch => {
-    return {
-        listRestaurants: () => dispatch({type: 'LIST_RESTAURANTS'})
-    }
-};
+const mapDispatchToProps = dispatch => ({
+    listRestaurants: () => dispatch({type: 'LIST_RESTAURANTS'}),
+    deleteRestaurant: (id) => dispatch({type: 'DELETE_RESTAURANT', id: id})
+});
 
 export default connect(
     mapStateToProps,

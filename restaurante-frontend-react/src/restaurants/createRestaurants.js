@@ -5,9 +5,7 @@ import {withFormik} from 'formik';
 
 class RestaurantForm extends React.Component {
     componentWillMount() {
-        if (this.props.match.params.id) {
-            this.props.getRestaurant(this.props.match.params.id);
-        }
+        this.props.getRestaurant(this.props.match.params.id);
     }
 
     render() {
@@ -49,7 +47,7 @@ class RestaurantForm extends React.Component {
 }
 
 const mapStateToProps = ({restaurantsReducer}) => ({
-        restaurant: restaurantsReducer.restaurant || {}
+    restaurant: restaurantsReducer.restaurant || {}
 });
 
 const mapDispatchToProps = dispatch => ({
