@@ -25,10 +25,10 @@ class CreateMeal extends React.Component {
                                 <div className="col-lg-7">
                                     <div className="form-group">
                                         <label htmlFor="restaurant">Restaurante</label>
-                                        <select className="form-control" id="restaurant"
-                                                required name="restaurant" value={values.restaurant_id}
+                                        <select className="form-control"
+                                                required name="restaurant_id" value={values.restaurant_id}
                                                 onChange={handleChange}>
-                                            <option value="null" disabled hidden="true"> Selecione</option>
+                                            <option value="" disabled hidden="true"> Selecione</option>
                                             {this.props.restaurants && this.props.restaurants.map(restaurant =>
                                                 <option key={restaurant.id}
                                                         value={restaurant.id}> {restaurant.name}</option>
@@ -38,13 +38,13 @@ class CreateMeal extends React.Component {
 
                                     <div className="form-group">
                                         <label htmlFor="name">Prato</label>
-                                        <input className="form-control" type="text" id="name" required name="name"
+                                        <input className="form-control" type="text" required name="name"
                                                value={values.name} onChange={handleChange}/>
                                     </div>
 
                                     <div className="form-group">
                                         <label htmlFor="price">Preço</label>
-                                        <input className="form-control" type="text" id="price" required name="price"
+                                        <input className="form-control" type="text" required name="price"
                                                value={values.price} onChange={handleChange}/>
                                     </div>
                                 </div>
@@ -78,10 +78,10 @@ const mapDispatchToProps = dispatch => ({
 });
 
 const mapPropsToValues = ({meal}) => ({
-    name: meal.name,
+    name: meal.name || '',
     id: meal.id,
-    restaurant_id: meal.restaurant_id,
-    price: meal.price
+    restaurant_id: meal.restaurant_id || '',
+    price: meal.price || ''
 });
 
 const handleSubmit = (values, {props}) => {

@@ -5,16 +5,6 @@ export default (state = {}, action) => {
                 ...state,
                 restaurants: action.restaurants
             };
-        case 'PERSIST_RESTAURANT' :
-            return {
-                ...state,
-                restaurant: action.restaurant
-            };
-        case 'GET_RESTAURANT' :
-            return { 
-                ...state,
-                id: action.id
-            };
         case 'GET_RESTAURANT_SUCCESS' :
             return {
                 ...state,
@@ -25,7 +15,6 @@ export default (state = {}, action) => {
                 ...state,
                 restaurants: state.restaurants.filter(restaurant => restaurant.id !== action.id)
             };
-        case 'LIST_RESTAURANTS':
         default:
             return state
     }

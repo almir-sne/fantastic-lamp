@@ -10,6 +10,11 @@ export default (state = {}, action) => {
                 ...state,
                 meal: action.meal
             };
+        case 'DELETE_MEAL_SUCCESS':
+            return {
+                ...state,
+                meals: state.meals.filter(meal => meal.id !== action.id)
+            };
         default:
             return state
     }

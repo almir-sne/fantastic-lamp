@@ -78,7 +78,7 @@ class Meals extends React.Component {
                         {this.props.meals.map(meal =>
                             <tr key={meal.id}>
                                 <td className="td-icon td-icon-red">
-                                    <a>
+                                    <a onClick={() => this.props.deleteMeal(meal.id)}>
                                         <i className="fa fa-minus"/>
                                     </a>
                                 </td>
@@ -107,7 +107,8 @@ const mapStateToProps = ({mealsReducer}) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-    listMeals: (search) => dispatch({type: 'LIST_MEALS', search: search})
+    listMeals: (search) => dispatch({type: 'LIST_MEALS', search: search}),
+    deleteMeal: (id) => dispatch({type: 'DELETE_MEAL', id: id})
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Meals);
