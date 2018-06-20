@@ -5,7 +5,11 @@ export default (state = {}, action) => {
                 ...state,
                 meals: action.meals
             };
-        case 'LIST_MEALS':
+        case 'GET_MEALS_SUCCESS' :
+            return {
+                ...state,
+                meal: action.meal
+            };
         default:
             return state
     }

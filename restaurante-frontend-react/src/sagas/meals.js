@@ -13,8 +13,36 @@ function* listMealsRequest({search}) {
     }
 }
 
+function* getMealsRequest({id}) {
+    if (id) {
+        const response = yield call(mealAPI.getMeal, id);
+
+        if (response && (response.status === 200 || response.status === 304)) {
+            yield put({
+                type: 'GET_MEALS_SUCCESS',
+                meal: response.data
+            });
+        }
+    } else {
+        yield put({
+            type: 'GET_MEALS_SUCCESS'
+        });
+    }
+}
+
+function* persistMealRequest({meal}) {
+    const response = yield call(mealAPI.persistMeal, meal);
+
+    if (response && (response.status === 200 || response.status === 201)) {
+        yield put(push('/meals'))
+    }
+}
+
 export default function* mealsWatcher() {
     yield [
         takeLatest('LIST_MEALS', listMealsRequest),
+        takeLatest('GET_MEAL', getMealsRequest),
+        takeLatest('PERSIST_MEAL', persistMealRequest)
+
     ]
 };

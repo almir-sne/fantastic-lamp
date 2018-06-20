@@ -36,7 +36,6 @@ function* getRestaurantRequest({id}) {
             type: 'GET_RESTAURANT_SUCCESS'
         });
     }
-
 }
 
 function* deleteRestaurant({id}) {

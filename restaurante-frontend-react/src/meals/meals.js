@@ -76,7 +76,7 @@ class Meals extends React.Component {
 
                         <tbody>
                         {this.props.meals.map(meal =>
-                            <tr>
+                            <tr key={meal.id}>
                                 <td className="td-icon td-icon-red">
                                     <a>
                                         <i className="fa fa-minus"/>
@@ -84,7 +84,7 @@ class Meals extends React.Component {
                                 </td>
 
                                 <td className="td-icon">
-                                    <Link to="/meal">
+                                    <Link to={"/meal/" + meal.id}>
                                         <i className="fa fa-edit"/>
                                     </Link>
                                 </td>
