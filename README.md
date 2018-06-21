@@ -8,6 +8,11 @@ Na pasta `restaurante-backend` execute `rake db:migrate` e depois `rails server`
 
 Na pasta `restaurante-backend` execute `rake db:migrate RAILS_ENV=test` e depois `rspec`
 
-### Frontend
+### Frontend Angular
 
-Na pasta `restaurante-frontend` execute `ng serve --port 9000`
+Na pasta `restaurante-frontend` execute npm start
+
+
+### Frontend React
+
+Na pasta `restaurante-frontend-react` execute `npm start`
