@@ -38,10 +38,8 @@ class Meals extends React.Component {
                         <form>
                             <div className="row">
                                 <div className="col-lg-6">
-                                    <div className="input-group">
-                                        <SearchBox search={this.state.search} path="/meals"
-                                                   handleChange={this.handleChange}/>
-                                    </div>
+                                    <SearchBox search={this.state.search} path="/meals"
+                                               handleChange={this.handleChange} label="Pesquisar"/>
                                 </div>
                                 <div className="col-lg-6">
                                     <Link to="/meal" className="btn btn-success">
@@ -88,8 +86,8 @@ class Meals extends React.Component {
                                         <i className="fa fa-edit"/>
                                     </Link>
                                 </td>
-                                <td> {meal.restaurant.name} </td>
-                                <td> {meal.name}</td>
+                                <td className="table-border"> {meal.restaurant.name} </td>
+                                <td className="table-border"> {meal.name}</td>
                                 <td> {meal.price}</td>
                             </tr>
                         )}

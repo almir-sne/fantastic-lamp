@@ -1,12 +1,15 @@
-import React, {Fragment} from "react";
+import React from "react";
 import {Link} from "react-router-dom";
 
-export const SearchBox = ({search, handleChange, path}) =>
-    <Fragment>
+export const SearchBox = ({search, handleChange, path, label}) =>
+    <div className="input-group">
         <input type="text" className="form-control" placeholder="Nome"
                id="search" defaultValue={search} onChange={handleChange} name="search"/>
-        <Link to={{pathname: path, search: search ? '?search=' + search : ''}}
-              className="btn btn-primary">
-            <i className="fa fa-search"/>
-        </Link>
-    </Fragment>
+        <span className="input-group-btn">
+            <Link to={{pathname: path, search: search ? '?search=' + search : ''}}
+                  className="btn btn-primary">
+                <i className="fa fa-search"/>
+                {label}
+            </Link>
+        </span>
+    </div>

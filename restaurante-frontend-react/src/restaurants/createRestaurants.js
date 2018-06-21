@@ -23,7 +23,7 @@ class RestaurantForm extends React.Component {
                             <div className="row">
                                 <div className="col-lg-7">
                                     <div className="form-group">
-                                        <label htmlFor="name">Restaurante</label>
+                                        <label htmlFor="name">Nome do restaurante:</label>
                                         <input className="form-control" type="text" onChange={handleChange}
                                                value={values.name} required name="name"/>
                                     </div>

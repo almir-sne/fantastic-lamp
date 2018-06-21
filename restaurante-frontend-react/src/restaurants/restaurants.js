@@ -37,10 +37,8 @@ class Restaurants extends React.Component {
                     <div className="panel-body">
                         <div className="row">
                             <div className="col-lg-6">
-                                <div className="input-group">
-                                    <SearchBox search={this.state.search} path="/restaurants"
-                                               handleChange={this.handleChange}/>
-                                </div>
+                                <SearchBox search={this.state.search} path="/restaurants"
+                                           handleChange={this.handleChange} label="Pesquisar"/>
                             </div>
                             <div className="col-lg-6">
                                 <Link to="/restaurant" className="btn btn-success">
